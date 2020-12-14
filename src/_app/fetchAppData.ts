@@ -33,6 +33,7 @@ export default async function fetchAppData({
         pageObject,
         options,
       }),
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: Incomplete router object
       router: { asPath, pathname, query, route, basePath },
     };

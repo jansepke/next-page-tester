@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 export const executeAsIfOnServer = async <T>(f: () => T) => {
   const tmpWindow = global.window;
   const tmpDocument = global.document;

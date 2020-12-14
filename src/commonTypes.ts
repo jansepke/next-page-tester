@@ -3,7 +3,6 @@ import type {
   GetStaticProps,
   GetStaticPaths,
   NextPage,
-  GetServerSidePropsResult,
   Redirect,
 } from 'next';
 import { AppContext, AppInitialProps } from 'next/app';
@@ -54,16 +53,18 @@ export type PageObject = {
 };
 
 export type PageProps = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 };
 
 export type PageData<P extends PageProps = PageProps> = {
   props?: P;
   redirect?: Redirect;
+  notFound?: boolean;
 };
 
 export type NextPageFile = {
-  [name: string]: any;
+  [name: string]: unknown;
   default: NextPage;
   getServerSideProps?: GetServerSideProps;
   getStaticProps?: GetStaticProps;
@@ -84,7 +85,7 @@ export type NextApp = React.FunctionComponent<{
 };
 
 export type NextCustomAppFile = {
-  [name: string]: any;
+  [name: string]: unknown;
   default: NextApp;
 };
 
@@ -93,5 +94,5 @@ export type NextCustomDocumentFile = {
 };
 
 export class CustomError extends Error {
-  payload?: any;
+  payload?: unknown;
 }

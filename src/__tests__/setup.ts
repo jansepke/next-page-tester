@@ -16,6 +16,7 @@ beforeAll(() => {
 
 afterAll(() => {
   if ('mockRestore' in console.error) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     console.error.mockRestore();
   }

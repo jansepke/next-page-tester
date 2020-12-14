@@ -44,7 +44,7 @@ function ensureNoMultipleDataFetchingMethods({
 function ensurePageDataHasProps({
   pageData,
 }: {
-  pageData: { [key: string]: any };
+  pageData: { [key: string]: unknown };
 }) {
   const allowedKeys = ['props', 'redirect'];
   for (const key of allowedKeys) {
@@ -65,7 +65,7 @@ function mergePageDataWithAppData({
   pageData,
   appInitialProps,
 }: {
-  pageData: { [key: string]: any };
+  pageData: PageData;
   appInitialProps?: AppInitialProps;
 }) {
   const { props: pageProps, ...restOfPageData } = pageData;

@@ -41,7 +41,7 @@ describe('Client side navigation', () => {
       expect(actual).toEqual(expected);
     });
 
-    it('GIP navigates between pages ', async () => {
+    it('GIP navigates between pages', async () => {
       const { page } = await getPage({
         nextRoot,
         route: `/gip/a`,
@@ -69,7 +69,7 @@ describe('Client side navigation', () => {
       );
     });
 
-    it('SSR navigates between pages ', async () => {
+    it('SSR navigates between pages', async () => {
       const { page } = await getPage({
         nextRoot,
         route: `/ssr/a`,

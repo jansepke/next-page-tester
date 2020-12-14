@@ -1,5 +1,5 @@
 import { stringify } from './index';
 
-export function PropsPrinter<T extends object>({ props }: { props: T }) {
+export function PropsPrinter<T extends unknown>({ props }: { props: T }) {
   return `props: ${stringify(props)}`;
 }

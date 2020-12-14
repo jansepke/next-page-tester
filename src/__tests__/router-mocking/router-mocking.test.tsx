@@ -40,8 +40,9 @@ describe('Router mocking', () => {
       const { page } = await getPage({
         nextRoot,
         route: '/with-router/99',
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        router: (router) => routerMock,
+        router: () => routerMock,
       });
       const { container: actual } = render(page);
       const { container: expected } = render(

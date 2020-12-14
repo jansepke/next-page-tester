@@ -11,7 +11,7 @@ export type PushHandler = (
 
 // https://github.com/vercel/next.js/issues/7479#issuecomment-659859682
 function makeDefaultRouterMock({
-  pushHandler = () => {},
+  pushHandler = () => null,
 }: {
   pushHandler?: PushHandler;
 }): NextRouter {
@@ -29,14 +29,14 @@ function makeDefaultRouterMock({
       pushHandler(url, as, options);
       return true;
     },
-    reload: () => {},
-    back: () => {},
-    prefetch: async () => {},
-    beforePopState: () => {},
+    reload: () => null,
+    back: () => null,
+    prefetch: () => Promise.resolve(),
+    beforePopState: () => null,
     events: {
-      on: () => {},
-      off: () => {},
-      emit: () => {},
+      on: () => null,
+      off: () => null,
+      emit: () => null,
     },
     isFallback: false,
   };

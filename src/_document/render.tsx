@@ -45,6 +45,7 @@ export default async function renderDocument({
   };
 
   if (customDocumentFile) {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     nextDocument.Main = Main;
   }

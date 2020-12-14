@@ -9,7 +9,7 @@ import path from 'path';
 
 export function parseRoute({ route }: { route: string }) {
   const urlObject = new URL(`http://test.com${route}`);
-  let { pathname } = urlObject;
+  const { pathname } = urlObject;
 
   /*
    * Next.js redirects by default routes with trailing slash to the counterpart without trailing slash
