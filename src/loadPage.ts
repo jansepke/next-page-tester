@@ -1,34 +1,26 @@
 import path from 'path';
-import fastGlob from 'fast-glob';
-import normalizePath from 'normalize-path';
-import { NextPageFile, ExtendedOptions } from './commonTypes';
 
-export function loadPage({
+export function loadPage<FileType>({
   pagesDirectory,
   pagePath,
 }: {
   pagesDirectory: string;
   pagePath: string;
-}): NextPageFile {
-  // @NOTE Here we have to remove pagePath's trailing "/"
+}): FileType {
+  // @NOTE Here we have to remove pagePath's leading "/"
   return require(path.resolve(pagesDirectory, pagePath.substring(1)));
 }
 
-export async function loadPageWithUnknownExtension<FileType>({
+export function loadPageIfExists<FileType>({
+  pagesDirectory,
   pagePath,
-  options: { pagesDirectory, pageExtensions },
 }: {
+  pagesDirectory: string;
   pagePath: string;
-  options: ExtendedOptions;
-}): Promise<FileType | undefined> {
-  const pageExtensionGlobPattern = `.{${pageExtensions.join(',')}}`;
-  const files = await fastGlob([
-    normalizePath(pagesDirectory + pagePath + pageExtensionGlobPattern),
-  ]);
-
-  if (!files.length) {
-    return;
+}): FileType | undefined {
+  try {
+    return loadPage({ pagesDirectory, pagePath });
+  } catch (e) {
+    return undefined;
   }
-
-  return require(files[0]);
 }
